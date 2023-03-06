@@ -38,3 +38,29 @@ def add_product (request) :
         messages.success(request, 'Product Saved Successfully')
         return redirect('add-product')
     return render(request,'addproducts.html')
+
+@login_required
+def view_products(request) :
+    #select all the products to be displayed
+    products = Product.objects.all()
+    return render (request, 'products.html',{'products' : products})
+
+@login_required
+def supplier (request) :
+    #check if form submitted has a method post
+    if request.method == 'POST' :
+        #start receiving data from the form
+        s_name = request.POST.get('jina')
+        s_item = request.POST.get('bidhaa')
+        s_phone = request.POST. get ('namabari')
+
+
+        #finally save data in our table called products
+        supp = supplier (supp_name = s_name, supp_item=s_item,supp_phone=s_phone)
+
+        supplier.save()
+
+        #Redirect back with a success message
+        messages.success(request, 'Supplier Saved Successfully')
+        return redirect('supplier')
+    return render(request,'supplier.html')

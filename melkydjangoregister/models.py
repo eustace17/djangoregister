@@ -9,3 +9,8 @@ class Product (models.Model) :
 
 def __str__ (self) :
     return self.prod_name
+
+class Supp (models.Model) :
+    supp_name = models. CharField(max_length =30, blank = False, null = False)
+    supp_item = models. CharField(max_length=30, blank=False, null=False)
+    supp_phone = models. CharField(max_length=30, blank=False, null=False)
