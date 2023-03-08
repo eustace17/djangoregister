@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Product ,Supp
 
 
-def register(request) :
+def register(request,) :
     if  request.method == "POST" :
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -64,7 +64,7 @@ def Supp(request) :
         #start receiving data from the form
         s_name = request.POST.get('jina')
         s_item = request.POST.get('bidhaa')
-        s_phone = request.POST. get ('namabari')
+        s_phone = request.POST. get ('nambari')
         s_email = request.POST.get ('emali')
 
 
@@ -100,4 +100,10 @@ def update_product (request, id) :
         messages.success(request, 'Product updated successfully')
         return redirect ('products')
     return render (request, 'update.html',{'product' : product})
+
+@login_required
+def payment (request,id) :
+    #select the product to be paid
+    product = Product.objects.get(id = id)
+    return render (request,'payment.html',{'product': product})
 
