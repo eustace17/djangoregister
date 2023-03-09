@@ -14,7 +14,7 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <input class="form-control" name="nambari" type="text" placeholder="Enter Mpesa phone number e.g 2547xxxxxxxx" required>
-                                <input type="hidden" name = "bei" value="">
+                                <input type="hidden" name = "bei" value="{{ product.prod_price }}">
                             </div>
                             <div class="form-group">
                                 <input class="btn btn-info" type="submit" value="Pay">
